@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-DOCKERFILES=( base ansible ssh terraform )
+DOCKERFILES=( base aws ssh ansible ansibleaws terraform )
 
 for DOCKERFILE in "${DOCKERFILES[@]}"; do
   echo "Building $DOCKERFILE..."
