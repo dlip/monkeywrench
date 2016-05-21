@@ -1,0 +1,6 @@
+[template]
+src = "environment.tmpl"
+dest = "/remote_environment/50-confd-etcd"
+keys = [
+    "/",
+]

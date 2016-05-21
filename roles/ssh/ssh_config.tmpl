@@ -1,0 +1,21 @@
+{{ if getenv "MW_BASTION_HOST" }}
+Host bastion
+    User centos
+    HostName {{ getenv "MW_BASTION_HOST" }}
+
+Host 10.61.144.* 10.61.145.*
+    ProxyCommand ssh -W %h:%p -q centos@bastion
+{{ end }}
+
+Host *
+  ServerAliveInterval 120
+  ForwardAgent yes
+  StrictHostKeyChecking no
+  ControlMaster auto
+  ControlPath ~/.ssh/ansible-%r@%h:%p
+  ControlPersist 5m
+  PreferredAuthentications publickey,keyboard-interactive,password,hostbased,gssapi-with-mic
+  {{getenv "MW_PROXY_HOST"}}
+{{ if getenv "MW_PROXY_HOST" }}
+  ProxyCommand /usr/local/bin/corkscrew {{ getenv "MW_PROXY_HOST" }} {{ getenv "MW_PROXY_PORT" }} %h %p
+{{ end }}
