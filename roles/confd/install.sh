@@ -1,5 +1,4 @@
 #!/bin/bash
-set -e
 
 CONFD_VERSION=0.11.0
 cd /tmp

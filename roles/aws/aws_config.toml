@@ -1,6 +1,0 @@
-[template]
-src = "aws_config.tmpl"
-dest = "/root/.aws/config"
-keys = [
-    "/",
-]

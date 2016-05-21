@@ -29,6 +29,7 @@ sudo ln -s $(pwd)/monkeywrench.sh /usr/bin/mw
 - [confd](roles/base/README.md)
 - [ssh](roles/ssh/README.md)
 - [ansible](roles/ansible/README.md)
+- [aws](roles/aws/README.md)
 
 ## Usage
 

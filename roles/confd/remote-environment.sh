@@ -1,5 +1,4 @@
 #!/bin/bash
-set -e
 
 ENVIRONMENT_CONFDIR=/roles/confd/environment
 
