@@ -54,12 +54,12 @@ then
   echo_warning "No remote environment files found"
 else
   echo_log "Loading remote environment files"
+  set -a
   for FILE in `ls -1 /remote_environment`; do
     echo_log "Loading remote environment from $FILE"
-    set -a
     source "/remote_environment/$FILE"
-    set +a
   done
+  set +a
 fi
 
 if [ ! "$(ls -A /scripts/setup)" ]

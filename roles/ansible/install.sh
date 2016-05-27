@@ -1,5 +1,6 @@
 #!/bin/bash
 set -e
+set -x
 
 yum -y install PyYAML python-jinja2 python-httplib2 python-keyczar python-paramiko python-setuptools git python-pip
 yum clean all
