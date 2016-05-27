@@ -2,18 +2,7 @@
 set -e
 set -x
 
-yum -y install openssh-clients gcc make
-
-# Corkscrew is used for SSHing through proxies
-export CORKSCREW_VERSION=2.0
-mkdir /tmp/corkscrew
-cd /tmp/corkscrew
-curl -OL http://agroman.net/corkscrew/corkscrew-${CORKSCREW_VERSION}.tar.gz
-tar -zxf corkscrew-${CORKSCREW_VERSION}.tar.gz
-cd corkscrew-${CORKSCREW_VERSION}
-./configure
-make install
-rm -rf /tmp/corkscrew
+apt-get install -y ssh corkscrew
 
 mkdir -p /root/.ssh
 

@@ -11,16 +11,7 @@ function find-up () {
 }
 
 function help {
-  echo "USAGE: ${0} <platform> <environment> <tool> [arguments]"
-  echo "AVAILABLE TOOLS:"
-  echo "ansible"
-  echo "ansible-playbook"
-  echo "terraform"
-  echo "fly"
-  echo "rancher-compose"
-  echo "ssh"
-  echo "NOTE: if the first argument to the tool is 'bash', bash will be run with the same setup as would be available to the tool."
-
+  echo "USAGE: ${0} <platform> <environment> <container> [arguments]"
   exit 1
 }
 # All of the args are mandatory.

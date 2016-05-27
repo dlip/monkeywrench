@@ -2,7 +2,7 @@
 set -e
 set -x
 
-yum -y install unzip
+apt-get install -y unzip
 
 TERRAFORM_VERSION=0.6.16
 mkdir /tmp/terraform

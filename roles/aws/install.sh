@@ -2,8 +2,7 @@
 set -e
 set -x
 
-yum -y install python-setuptools python-pip jq
-yum clean all
+apt-get -y install python-pip jq
 
 pip install boto awscli
 
