@@ -4,14 +4,6 @@
 
 Monkeywrench is a collection docker containers for devops tools. It aims to unify all the tools configuration, which can come from local and remote sources. It does this by gathering these various sources into environment variables, which can be easily read by many tools directly and otherwise used in templates to generate configuration files.
 
-## Installation
-
-- Install [docker](https://docs.docker.com/engine/installation/)
-
-```
-sudo curl -Lo /usr/local/bin/mw https://raw.githubusercontent.com/dlip/monkeywrench/master/monkeywrench.sh && sudo chmod +x /usr/local/bin/mw
-```
-
 ## Configuration
 
 Configuration comes from "local environment" and "remote environment". Local environment is read before remote environment so it can be used when requesting remote environment.
@@ -53,6 +45,14 @@ Each container has different roles installed which can load remote environment. 
 - [AWS](https://github.com/dlip/monkeywrench/blob/master/docs/aws.md)
 - [SSH](https://github.com/dlip/monkeywrench/blob/master/docs/ssh.md)
 - [Terraform](https://github.com/dlip/monkeywrench/blob/master/docs/terraform.md)
+
+## Installation
+
+- Install [docker](https://docs.docker.com/engine/installation/)
+
+```
+sudo curl -Lo /usr/local/bin/mw https://raw.githubusercontent.com/dlip/monkeywrench/master/monkeywrench.sh && sudo chmod +x /usr/local/bin/mw
+```
 
 ## Usage
 
