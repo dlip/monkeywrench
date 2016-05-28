@@ -2,6 +2,12 @@
 SCRIPT_NAME=`readlink -f ${BASH_SOURCE[0]}`
 DIR="$( cd "$( dirname "${SCRIPT_NAME}" )" && pwd )"
 
+if [[ "$1" == "pull" ]]; then
+  echo "Pulling $2"
+  docker pull dlip/monkeywrench-$2
+  exit 0
+fi
+
 function find-up () {
   path=$(pwd)
   while [[ "$path" != "" && ! -f "$path/$1" ]]; do
@@ -12,6 +18,7 @@ function find-up () {
 
 function help {
   echo "USAGE: ${0} <platform> <environment> <container> [arguments]"
+  echo "Pull container: ${0} pull <container>"
   exit 1
 }
 # All of the args are mandatory.

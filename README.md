@@ -30,7 +30,7 @@ Interpolation and bash logic can also be used ie:
 ```
 SITE_DOMAIN="myapp.${DOMAIN}"
 
-if [[ "$DEPLOY_BRANCH" == "master" ]]
+if [[ "$DEPLOY_BRANCH" == "master" ]]; then
   SITE_WARNING="Site running in dev mode"
 fi
 ```
@@ -56,7 +56,13 @@ Each container has different roles installed which can load remote environment. 
 
 ## Usage
 
-- The command line arguments are `mw <platform> <environment> <container> <command> [arguments]` eg.
+Pull the container you would like to run with the command `mw pull <container>` eg.
+
+```
+mv pull ansible
+```
+
+The command line arguments are `mw <platform> <environment> <container> <command> [arguments]` eg.
 
 ```
 mv projectx nonprod ansible ansible-playbook myplaybook.yml
