@@ -49,6 +49,7 @@ Each container has different roles installed which can load remote environment. 
 ## Installation
 
 - Install [docker](https://docs.docker.com/engine/installation/)
+- Install Monkeywrech
 
 ```
 sudo curl -Lo /usr/local/bin/mw https://raw.githubusercontent.com/dlip/monkeywrench/master/monkeywrench.sh && sudo chmod +x /usr/local/bin/mw
