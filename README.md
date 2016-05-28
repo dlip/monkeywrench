@@ -2,7 +2,7 @@
 
 ## Overview
 
-Monkeywrench is a collection docker containers for devops tools. It aims to unify all the tools configuration, which can come from local and remote sources. It does this by gathering these various sources into environment variables, which can be easily read by any tool and used in templates to generate configuration files.
+Monkeywrench is a collection docker containers for devops tools. It aims to unify all the tools configuration, which can come from local and remote sources. It does this by gathering these various sources into environment variables, which can be easily read by many tools directly and otherwise used in templates to generate configuration files.
 
 ## Installation
 
