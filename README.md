@@ -59,13 +59,13 @@ Each container has different roles installed which can load remote environment. 
 Pull the container you would like to run with the command `mw pull <container>` eg.
 
 ```
-mv pull ansible
+mw pull ansible
 ```
 
 The command line arguments are `mw <platform> <environment> <container> <command> [arguments]` eg.
 
 ```
-mv projectx nonprod ansible ansible-playbook myplaybook.yml
+mw projectx nonprod ansible ansible-playbook myplaybook.yml
 ```
 
 ## Develoment
