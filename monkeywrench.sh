@@ -28,9 +28,11 @@ DOCKER_VARS=""
 # This makes develoment easier when editing scripts
 if [ -n "$MW_DEVMODE" ]; then
   echo "Running in dev mode"
-  DOCKER_VARS=" -v $DIR/roles:/roles --link etcd "
+  DOCKER_VARS=" -v $DIR/roles:/roles"
+  if [ -n "$MW_DEVMODE_ETCD" ]; then
+  DOCKER_VARS="$DOCKER_VARS --link etcd "
+  fi
 fi
-
 
 declare -a ENV_FILES=(
   env

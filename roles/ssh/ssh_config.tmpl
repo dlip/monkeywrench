@@ -12,7 +12,7 @@ Host *
   ForwardAgent yes
   StrictHostKeyChecking no
   ControlMaster auto
-  ControlPath ~/.ssh/ansible-%r@%h:%p
+  ControlPath ~/.ssh/control-%r@%h:%p
   ControlPersist 5m
   PreferredAuthentications publickey,keyboard-interactive,password,hostbased,gssapi-with-mic
 {{ if getenv "MW_PROXY_HOST" }}
