@@ -22,15 +22,16 @@ fi
 
 PLATFORM=$1
 ENVIRONMENT=$2
-TOOL=$3
+CONTAINER=$3
 DOCKER_VARS=""
 
 # This makes develoment easier when editing scripts
 if [ -n "$MW_DEVMODE" ]; then
   echo "Running in dev mode"
   DOCKER_VARS=" -v $DIR/roles:/roles"
+
   if [ -n "$MW_DEVMODE_ETCD" ]; then
-  DOCKER_VARS="$DOCKER_VARS --link etcd "
+    DOCKER_VARS="$DOCKER_VARS --link etcd "
   fi
 fi
 
@@ -49,10 +50,10 @@ for ENV_FILE in ${ENV_FILES[@]}; do
   fi
 done
 
-echo "--- Start Container ---"
+echo "--- Start $CONTAINER Container ---"
 docker run --rm -it\
   $DOCKER_VARS\
   -e PLATFORM=$PLATFORM\
   -e ENVIRONMENT=$ENVIRONMENT\
   -v "$PWD:/mnt/workdir"\
-  dlip/monkeywrench-$TOOL "${@:4}"
+  dlip/monkeywrench-$CONTAINER "${@:4}"

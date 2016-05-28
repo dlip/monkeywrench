@@ -1,41 +1,74 @@
-# Monkeywrench (WIP)
- 
-Monkeywrench is a set of docker containers with tools to make devops life easier. All tools can get the config they need from environment variables and remote key value stores such as vault using confd.
+# Monkeywrench
 
-# Requirements
+## Overview
 
-* docker
+Monkeywrench is a collection docker containers for devops tools. It aims to unify all the tools configuration, which can come from local and remote sources. It does this by gathering these various sources into environment variables, which can be easily read by any tool and used in templates to generate configuration files.
 
-## Setup
+## Installation
+
+- Install [docker](https://docs.docker.com/engine/installation/)
 
 ```
-./build.sh
-sudo ln -s $(pwd)/monkeywrench.sh /usr/bin/mw
+sudo curl -Lo /usr/local/bin/mw https://raw.githubusercontent.com/dlip/monkeywrench/master/monkeywrench.sh && sudo chmod +x /usr/local/bin/mw
 ```
 
-- Create local environment files, it will search up directories for the following files:
+## Configuration
+
+Configuration comes from "local environment" and "remote environment". Local environment is read before remote environment so it can be used when requesting remote environment.
+
+### Local Environment
+
+Local environment comes from files either in the directory Monkeywrech is run from, or in directories above. The files are formatted `KEY=value` ie: 
+
+```
+DOMAIN=mydomain.com
+DEPLOY_BRANCH=master
+```
+
+Interpolation and bash logic can also be used ie:
+
+```
+SITE_DOMAIN="myapp.${DOMAIN}"
+
+if [[ "$DEPLOY_BRANCH" == "master" ]]
+  SITE_WARNING="Site running in dev mode"
+fi
+```
+
+The filenames are separated into "platform" and "environment" to allow working with different projects and deployments. The filenames are loaded in the following priority:
 
 - env
 - env.private
 - envpe.${PLATFORM}-${ENVIRONMENT}
 - envpe.${PLATFORM}-${ENVIRONMENT}.private
 
-- Find out more valid variables in the roles doc
-- Some roles can also download remote environment variables also
+### Remote Environment
 
-## Roles
+Each container has different roles installed which can load remote environment. You can read about it in the links for each container.
 
-- [base](roles/base/README.md)
-- [confd](roles/base/README.md)
-- [ssh](roles/ssh/README.md)
-- [ansible](roles/ansible/README.md)
-- [aws](roles/aws/README.md)
+## Containers
+
+- [Base](https://github.com/dlip/monkeywrench/blob/master/docs/base.md)
+- [Ansible](https://github.com/dlip/monkeywrench/blob/master/docs/ansible.md)
+- [AWS](https://github.com/dlip/monkeywrench/blob/master/docs/aws.md)
+- [SSH](https://github.com/dlip/monkeywrench/blob/master/docs/ssh.md)
+- [Terraform](https://github.com/dlip/monkeywrench/blob/master/docs/terraform.md)
 
 ## Usage
 
-- The command line arguments are `mw <platform> <environment> <container> <command> [arguments]`
+- The command line arguments are `mw <platform> <environment> <container> <command> [arguments]` eg.
 
 ```
 mv projectx nonprod ansible ansible-playbook myplaybook.yml
 ```
+
+## Develoment
+
+```
+git clone https://github.com/dlip/monkeywrench.git
+cd monkeywrench
+./build.sh
+sudo ln -s $(pwd)/monkeywrench.sh /usr/bin/mwd
+```
+
 
