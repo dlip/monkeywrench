@@ -53,4 +53,4 @@ docker run --rm -it\
   -e PLATFORM=$PLATFORM\
   -e ENVIRONMENT=$ENVIRONMENT\
   -v "$PWD:/mnt/workdir"\
-  monkeywrench-$TOOL "${@:4}"
+  dlip/monkeywrench-$TOOL "${@:4}"
